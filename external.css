@@ -1,0 +1,20 @@
+h1,h3{
+    font-weight: 900;
+    color: blue;
+}
+.box1{
+    border: 2px solid black;
+    margin: 50px;
+    width: 500px;
+    height: 500px;
+    padding: 100px;
+    background-color: antiquewhite;
+}
+.box2{
+    border: 5px solid black;
+    height: 500px;
+    width: 1000px;
+    padding: 100px;
+    text-align: center;
+    background-color: chartreuse;
+}
