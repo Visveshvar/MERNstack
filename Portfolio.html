@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        #myvideo{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the video covers the entire container */
+            z-index: -1;
+        }
+        .backgrounddiv{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }z
+        .content{
+            position: relative;
+            z-index: 1; /* Layer it above the overlay */
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .navigationbar{
+            display: flex;
+        }
+        .nav-link{
+            font-weight: bolder;
+        }
+        .nav-link:hover{
+            background-color: black;
+        }
+        .navigationheader{
+            display: flex;
+            background-color: white;
+            position: fixed;
+            top: 0;
+            z-index: 2;
+            width: 100%;
+        }
+        .list1{
+            display: flex;
+            list-style-type: none;
+            margin-left: 90px;
+            margin-top: 15px;
+            margin-right: 20px;
+        }
+        .li1{
+            margin-left: 80px;
+            border-radius: 5px;
+            width: 50px;
+            text-align: center;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+        }
+        .li1:hover{
+            background-color:black;
+            color: white;
+        }
+        .li1:hover a {
+            color: white;
+        }
+        button{
+            background-color: black;
+            border: 2px solid black;
+            border-radius: 7px;
+            width: 110px;
+            margin-left: 80px;
+        }
+        .name{
+            color: black;
+            font-size: 80px;
+            margin-left: 50px;
+        }
+        .image1{
+            border: 5px solid black;
+            height: 200px;
+            width: 200px;
+            border-radius: 105px;
+            overflow: hidden;
+            margin-left: 100px;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #home{
+            margin-top: 100px;
+            display: flex;
+        }
+        .subheading1{
+            color: black;
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+        .inner1{
+            width: 180px;
+            height: 5px;
+            background-color: lawngreen;
+            margin-left: 100px;
+        }
+        .subpara1{
+            color: black;
+            text-align: justify;
+            margin-left: 100px;
+            font-size: 20px;
+            margin-top: 30px;
+            line-height: 40px;
+            margin-right: 20px;
+        }
+        .grid-container{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            margin-left: 70px;
+            margin-top: 30px;
+            
+           
+        }
+        .grid-item{
+            color:black;
+            margin: 30px;
+            text-align: center;
+        }
+        .grid-container2{
+            display: grid;
+            grid-template-columns: repeat(3,3fr);
+            margin-left: 65px;
+            margin-top: 30px;
+
+        }
+        .grid-item1{
+            color: black;
+            margin: 30px;
+        }
+        .list2{
+            margin-left: 0px;
+        }
+        .inner2{
+            margin-left: 100px;
+            margin-top: 50px;
+            color: black;
+        }
+        .subpara2{
+            color: black;
+            text-align: justify;
+            font-size: 20px;
+            margin-top: 30px;
+            line-height: 40px;
+            margin-right: 20px;
+        }
+        .fa{
+            font-size: 30px;
+            margin: 20px;
+        }
+        .hr1{
+            width: 100%;
+            border: 2px solid black;
+        }
+        #contacts{
+            margin-left: 580px;
+        }
+        .card{
+            margin-top: 10px;
+            opacity: 0.9;
+            height: 300px;
+            background-color: rgb(250, 250, 250);
+            
+        }
+        .card:hover{
+      box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14),
+                  0 1px 18px 0 rgba(0, 0, 0, 0.12),
+                  0 3px 5px -1px rgba(0, 0, 0, 0.4)
+
+        }
+        .card-body{
+            color: black;
+            text-align: justify;
+            font-size: 20px;
+            margin-top: 30px;
+            line-height: 40px;
+            margin-right: 20px;
+        }
+        .row{
+            margin-left: 85px;
+            margin-right: 100px;
+        }
+        .elink{
+            font-size: 15px;
+            color:black;
+        }
+        #home{
+           padding-top: 80px;
+           margin-top: 50px;
+        }
+        #about{
+            padding-top: 10px;
+        }
+        #education{
+            padding-top: 10px;
+        }
+        #skills{
+            padding-top: 10px;
+        }
+        #project{
+            padding-top: 10px;
+        }
+        #certifications{
+            padding-top: 10px;
+        }
+        #contacts{
+            padding-top: 10px;
+        }
+        .totop{
+            border: 2px solid black;
+            width: 50px;
+            height: 50px;
+            border-radius: 27px;
+            background-color: white;
+            position: fixed;
+            z-index: 35;
+            bottom: 0;
+            margin-left: 1460px;
+            margin-bottom: 10px;
+            border:8px outset #999;
+    -webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="backgrounddiv">
+        <video autoplay muted loop id="myvideo">
+            <source src="images/backgroundvideo.mp4" type="video/mp4">
+        </video>
+    </div>-->
+    <!--<div class="content">
+        <nav class="navbar navbar-expand-sm">
+            <div class="container-fluid">
+            <ul class="navbar-nav nav-pills collapse navbar-collapse" >
+                
+                <li class="nav-item">
+                    <a class=" nav-link text-light" href="#" style="margin-left: 370px;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class=" nav-link text-light ms-5" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class=" nav-link text-light ms-5" href="#">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a class=" nav-link text-light ms-5" href="#">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class=" nav-link text-light ms-5" href="#">Acheivements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light ms-5" href="#">Contacts</a>
+                </li>
+            </ul>
+            </div>
+        </nav>-->
+        <nav class="navigationheader">
+            <ul class="list1">
+                <li class="li1"><a href="#home">Home</a></li>
+                <li class="li1"><a href="#about">About</a></li>
+                <li class="li1" style="width: 80px;"><a href="#education">Education</a></li>
+                <li class="li1"><a href="#skills">Skills</a></li>
+                <li class="li1" style="width: 70px;"><a href="#project">Projects</a></li>
+                <li class="li1" style="width: 110px;"><a href="#certifications">Certifications</a></li>
+                <li class="li1" style="width: 70px;"><a href="#contacts">Contacts</a></li>
+                <button><a href="images/White Simple Student CV Resume_page-0001.jpg" target="_blank" style="color:white">View Resume</a></button>
+            </ul>
+        </nav>
+    </div>
+    <div class="maindiv">
+        <div id="home">
+            <div class="image1">
+                <img src="images/IMG_20220629_125228.jpg">
+            </div>
+            <h1 class="name">Hi!<br> I'm Visveshvar Sakthivel.</h1>
+        </div>
+        <div id="about">
+            <h1 class="subheading1">About Me</h1>
+            <div class="inner1"></div>
+            <p class="subpara1">
+                Programmer and a passionate learner who's always willing to learn and work across different technologies and domains. Undergoing my undergraduate Bachelor's degree in the stream of Electronics and Communication Engineering at Sri Krishna College of Engineering and Technology, Coimbatore.
+                <br><br>
+                Open to new opportunities and collaborative work that enables me to explore and learn exciting technologies.
+            </p>
+        </div>
+        <div id="education">
+            <h1 class="subheading1">Education</h1>
+            <div class="inner1"></div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h5>B.E. ELECTRONICS AND COMMUNICATION</h1>
+                    <div style="margin-top: 30px;">
+                        <p>YEAR: 2022-2026</p>
+                        <p>COLLEGE: Sri Krishna College of Engineering and Technology</p>
+                        <p>CGPA: 8.29</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <h5>CLASS XII, CBSE</h1>
+                        <div style="margin-top: 30px;">
+                            <p>YEAR: 2022</p>
+                            <p>SCHOOL: Kendriya Vidyalaya, Coimbatore</p>
+                            <p>PERCENTAGE: 91%</p>
+                        </div>
+                </div>
+                <div class="grid-item">
+                    <div>
+                        <h5>CLASS X, CBSE</h1>
+                            <div style="margin-top: 30px;">
+                                <p>YEAR: 2020</p>
+                                <p>SCHOOL: Kendriya Vidyalaya, Coimbatore</p>
+                                <p>PERCENTAGE: 84.4%</p>
+                            </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <div id="skills">
+            <h1 class="subheading1">Skills</h1>
+            <div class="inner1" style="width: 100px;"></div>
+            <div class="grid-container2">
+                <div class="grid-item1">
+                    <h5>Programming Languages</h5>
+                    <ul class="list2">
+                        <li>Java</li>
+                        <li>Advanced Java</li>
+                        <li>C++</li>
+                        <li>Embedded C</li>
+                        <li>Javascript</li>
+                        <li>Python</li>
+                    </ul>
+                </div>
+                <div class="grid-item1">
+                    <h5>Frontend Development</h5>
+                    <ul class="list2">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Media Query</li>
+                        <li>Jquery</li>
+                        <li>Bootstrap</li>
+                    </ul>
+                </div>
+                <div class="grid-item1">
+                    <h5>Database Management</h5>
+                    <ul class="list2">
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="project">
+            <h1 class="subheading1">Projects</h1>
+            <div class="inner1" style="width: 150px;"></div>
+            <div class="inner2">
+                <h3>1. Self Balancing Robot</h3>
+                <p class="subpara2">A self-balancing robot is a type of robotic system designed to maintain its balance using sensors and actuators. It uses gyroscopes and accelerometers to detect its orientation and adjust its motors to stay upright, mimicking the balance mechanisms of humans.</p>
+            </div>
+            <div class="inner2">
+                <h3>2. Password Validation using PIC16F877A</h3>
+                <p class="subpara2">
+                    Password validation using the PIC16F877A microcontroller involves programming the device to compare inputted passwords against a stored value. It utilizes keypad interfacing for input and LCD displays for feedback, ensuring secure access control in embedded systems.
+                </p>
+            </div>
+    
+        </div>
+        <div id="certifications">
+            <h1 class="subheading1">Certifications</h1>
+            <div class="inner1" style="width: 250px;"></div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>NPTEL Certifications</h3>
+                        <ul>
+                            <li >Enhancing Soft Skills.<a href="images/727722euec207_VISVESHVAR_S.pdf" target="_blank"><i class="fa fa-external-link elink"></i></a></i></li>
+                            <li >Ethics and Engineering.<a href="images/727722euec207_VISVESHVAR_S.pdf" target="_blank"><i class="fa fa-external-link elink"></i></a></li>
+                        </ul>
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Ideathon</h3>
+                            <p >
+                                Participated in the Ideathon held at Bannari Amman Institute of Technology(Project Title:Community and Profile Building app for athlete).<a href="images/VISVESHVAR S_IDEATHON.pdf" target="_blank"><i class="fa fa-external-link elink"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Coursera</h3>
+                            <ul>
+                                <li>Building your Leadership skills.<a href="images/727722euec207_Coursera.pdf" target="_blank"><i class="fa fa-external-link elink"></i></a></li>
+                                
+                            </ul>
+    
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Poster Presentation</h3>
+                            <p >
+                                Participated in a poster presentation and received a participation certificate.<a href="images/PosterPresentation certificate.pdf" target="_blank"><i class="fa fa-external-link elink"></i></a>
+                            </p>
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Sports</h3>
+                                <p>
+                                    Represented Nationals for Chennai Region U-17 cricket team held at KIIT University, Bhuvaneshwar.<a href="images/727722euec207_Coursera.pdf" target="_blank"><i class="fa fa-external-link elink"></i></a>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Internship</h3>
+                            <p>
+                                Completed my internship at the Ministry of Micro, Small, and Medium Enterprises (MSME) in the field of embedded systems.<a href="images/727722euec207_VISVESHVAR_S.pdf" target="_blank"><i class="fa fa-external-link elink"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <!--<div class="inner2">
+                <h3>1. NPTEL Certifications</h3>
+                <ul>
+                    <li class="subpara2">Enhancing Soft Skills<i class="fa fa-external-link"></i></li>
+                    <li class="subpara2">Ethics and Engineering<i class="fa fa-external-link"></i></li>
+                </ul>
+    
+            </div>
+            <div class="inner2">
+                <h3>2. Ideathon</h3>
+                <p class="subpara2">
+                    Participated in the Ideathon held at Bannari Amman Institute of Technology(Project Title:Community and Profile Building app for athlete).<i class="fa fa-external-link"></i>
+                </p>
+            </div>
+            <div class="inner2">
+                <h3>3. Coursera</h3>
+                <ul>
+                    <li class="subpara2">Building your Leadership skills<i class="fa fa-external-link"></i></li>
+                    
+                </ul>
+            </div>
+            <div class="inner2">
+                <h3>4. Poster Presentation</h3>
+                <p class="subpara2">
+                    Participated in a poster presentation and received a participation certificate.<i class="fa fa-external-link"></i>
+                </p>
+            </div>
+            <div class="inner2">
+                <h3>5. Sports</h3>
+                <p class="subpara2">
+                    Represented Nationals for Chennai Region U-17 cricket team held at KIIT University, Bhuvaneshwar.<i class="fa fa-external-link"></i>
+                </p>
+            </div>
+            <div class="inner2">
+                <h3>4. Internship</h3>
+                <p class="subpara2">
+                    Completed my internship at the Ministry of Micro, Small, and Medium Enterprises (MSME) in the field of embedded systems.<i class="fa fa-external-link"></i>
+            </div>-->
+        </div>
+        <hr class="hr1">
+        <div id="contacts">
+            <a href="https://www.linkedin.com/in/visveshvar-s-00a0b7256/" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+            <a href="https://github.com/Visveshvar" target="_blank"><i class="fa fa-github-square"></i></a>
+            <a href="https://www.instagram.com/accounts/login/?next=%2F&source=desktop_nav" target="_blank"><i class="fa fa-instagram"></i></a>
+            <a href="https://x.com/Darkofworldtree" target="_blank"><i class="fa fa-twitter-square"></i></a>
+            <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" target="_blank"><i class="fa fa-envelope"></i></a>
+        </div>
+    </div>
+    <button class="totop"><a href="#home"><i class="fa fa-angle-up" style="font-size: 30px;margin: 0px;"></i></a></button>
+</body>
+</html>
