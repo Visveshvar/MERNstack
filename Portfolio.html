@@ -4,35 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="images/IMG_20220629_125228.jpg">
+    <title>Visveshvar Sakthivel</title>
     <style>
-        #myvideo{
-            position: absolute;
-            top:0;
-            left:0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures the video covers the entire container */
-            z-index: -1;
-        }
-        .backgrounddiv{
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }z
-        .content{
-            position: relative;
-            z-index: 1; /* Layer it above the overlay */
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
         .navigationbar{
             display: flex;
         }
@@ -63,6 +39,12 @@
             width: 50px;
             text-align: center;
         }
+        .li11{
+            margin-left: 0px;
+            border-radius: 5px;
+            width: 50px;
+            text-align: center;
+        }
         a{
             color: black;
             text-decoration: none;
@@ -71,10 +53,17 @@
             background-color:black;
             color: white;
         }
+        .li11:hover{
+            background-color:black;
+            color: white;
+        }
         .li1:hover a {
             color: white;
         }
-        button{
+        .li11:hover a {
+            color: white;
+        }
+        .button1{
             background-color: black;
             border: 2px solid black;
             border-radius: 7px;
@@ -89,6 +78,14 @@
             border-radius: 7px;
             width: 180px;
             margin-left: 80px;
+            margin-top: 10px;
+            height: 40px;
+        }
+        .button2 a{
+            color: white;
+        }
+        .button1 a{
+            color: white;
         }
         .name{
             color: black;
@@ -250,40 +247,9 @@
     </style>
 </head>
 <body>
-    <!--<div class="backgrounddiv">
-        <video autoplay muted loop id="myvideo">
-            <source src="images/backgroundvideo.mp4" type="video/mp4">
-        </video>
-    </div>-->
-    <!--<div class="content">
-        <nav class="navbar navbar-expand-sm">
-            <div class="container-fluid">
-            <ul class="navbar-nav nav-pills collapse navbar-collapse" >
-                
-                <li class="nav-item">
-                    <a class=" nav-link text-light" href="#" style="margin-left: 370px;">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class=" nav-link text-light ms-5" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class=" nav-link text-light ms-5" href="#">Education</a>
-                </li>
-                <li class="nav-item">
-                    <a class=" nav-link text-light ms-5" href="#">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a class=" nav-link text-light ms-5" href="#">Acheivements</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light ms-5" href="#">Contacts</a>
-                </li>
-            </ul>
-            </div>
-        </nav>-->
         <nav class="navigationheader">
             <ul class="list1">
-                <li class="li1" style="margin-left: 0px;"><a href="#home">Home</a></li>
+                <li class="li11"><a href="#home">Home</a></li>
                 <li class="li1"><a href="#about">About</a></li>
                 <li class="li1" style="width: 80px;"><a href="#education">Education</a></li>
                 <li class="li1"><a href="#skills">Skills</a></li>
@@ -291,8 +257,8 @@
                 <li class="li1" style="width: 110px;"><a href="#certifications">Certifications</a></li>
                 <li class="li1" style="width: 70px;"><a href="#contacts">Contacts</a></li>
             </ul>
-            <button><a href="images/White Simple Student CV Resume_page-0001.jpg" target="_blank" style="color:white">View Resume</a></button>
-            <button class="button2"><a  href="images/White Simple Student CV Resume_page-0001.jpg" download="" target="_blank"  style="color:white">Download Resume</a></button>
+            <button class="button1"><a href="images/White Simple Student CV Resume_page-0001.jpg" target="_blank">View Resume</a></button>
+            <button class="button2"><a  href="images/White Simple Student CV Resume_page-0001.jpg" download="" target="_blank">Download Resume</a></button>
         </nav>
     </div>
     <div class="maindiv">
@@ -464,44 +430,6 @@
                 </div>
                 
             </div>
-            <!--<div class="inner2">
-                <h3>1. NPTEL Certifications</h3>
-                <ul>
-                    <li class="subpara2">Enhancing Soft Skills<i class="fa fa-external-link"></i></li>
-                    <li class="subpara2">Ethics and Engineering<i class="fa fa-external-link"></i></li>
-                </ul>
-    
-            </div>
-            <div class="inner2">
-                <h3>2. Ideathon</h3>
-                <p class="subpara2">
-                    Participated in the Ideathon held at Bannari Amman Institute of Technology(Project Title:Community and Profile Building app for athlete).<i class="fa fa-external-link"></i>
-                </p>
-            </div>
-            <div class="inner2">
-                <h3>3. Coursera</h3>
-                <ul>
-                    <li class="subpara2">Building your Leadership skills<i class="fa fa-external-link"></i></li>
-                    
-                </ul>
-            </div>
-            <div class="inner2">
-                <h3>4. Poster Presentation</h3>
-                <p class="subpara2">
-                    Participated in a poster presentation and received a participation certificate.<i class="fa fa-external-link"></i>
-                </p>
-            </div>
-            <div class="inner2">
-                <h3>5. Sports</h3>
-                <p class="subpara2">
-                    Represented Nationals for Chennai Region U-17 cricket team held at KIIT University, Bhuvaneshwar.<i class="fa fa-external-link"></i>
-                </p>
-            </div>
-            <div class="inner2">
-                <h3>4. Internship</h3>
-                <p class="subpara2">
-                    Completed my internship at the Ministry of Micro, Small, and Medium Enterprises (MSME) in the field of embedded systems.<i class="fa fa-external-link"></i>
-            </div>-->
         </div>
         <hr class="hr1">
         <div id="contacts">
