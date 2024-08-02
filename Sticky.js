@@ -1,39 +1,30 @@
 var a=0;
 var nextmarginleft=60;
-var nextmargintop=15;
 var butincr=1;
 var activenote=null
 var container=document.getElementById('add') 
 
 function increment(){
-    //var containerWidth = container.offsetWidth;
     var ins=document.getElementById('instruction')
     ins.style.display='none';
     var boxsize=100;
      if(nextmarginleft+boxsize>window.innerWidth-200)
-        {
-            nextmargintop+=210;
+    {
             nextmarginleft=60;
-        }
+    }
 
     var newbox=document.createElement('div')
     newbox.className='box'
     newbox.style.left=nextmarginleft+"px"
-    newbox.style.top=nextmargintop+"px"
     var textcontent=document.createElement('textarea');
     textcontent.placeholder="Type here..."
     textcontent.className="textbox"
     newbox.appendChild(textcontent)
     document.getElementById('add').appendChild(newbox)
-    //applyboxshadow() // Get the icon element
-    //newbox.innerHTML=a;
-    //var b1=document.createElement('button')
-    //b1.textContent="Edit"
-    //newbox.appendChild(b1)
     newbox.addEventListener('mousedown',mouseDown)
     textcontent.addEventListener('mousedown',mouseDown)
     a++;
-    nextmarginleft+=210;
+    nextmarginleft+=60;
     newbox.addEventListener('click',()=>{
         activenote=newbox;
     })
@@ -48,25 +39,19 @@ function decrement(){
     if(a===0)
     {
         nextmarginleft=60;
-        nextmargintop=15;
         alert('No Sticky notes to delete');
         return;
     }
     if(activenote){
         activenote.parentNode.removeChild(activenote)
         activenote=null;
-        if(nextmarginleft===60){
-            nextmargintop-=210;
-        }
+        nextmarginleft-=60;
         a--;
     }
     else{
         var delbox=document.getElementById('add')
         delbox.removeChild(delbox.lastChild);
-        nextmarginleft-=210
-        if(nextmarginleft===60 && a!=1){
-            nextmargintop-=210;
-        }
+        nextmarginleft-=60;
         a--;
     }
 }
@@ -74,7 +59,6 @@ function deleteall(){
     if(a===0)
         {
             nextmarginleft=60;
-            nextmargintop=15;
             alert('No Sticky notes to delete');
             return;
         }
@@ -84,8 +68,10 @@ function deleteall(){
         
     }
     nextmarginleft=60;
-    nextmargintop=15;
+    a=0;
 }
+    
+
 function choosing()
 {
     document.getElementById('colorpicker').click();
@@ -132,10 +118,9 @@ function toggleMode() {
         bg.style.backgroundColor='#1c1c1c'
         bgmen.style.backgroundColor='#e6e5e3'
         bgmen.style.color='black'
-        ins.style.color='white'
+        ins.style.color='white';
     } else {
         icon.innerText = 'dark_mode'; // Change to dark mode icon
-        ins.style.color='black'
         bg.style.background = `
         linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -50px 0,
     linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
@@ -145,6 +130,7 @@ function toggleMode() {
         bg.style.backgroundColor='#82ebd1'
         bgmen.style.backgroundColor='black'
         bgmen.style.color='white'
+        ins.style.color='black'
         icon.setAttribute('title','dark mode')
     }
 }
