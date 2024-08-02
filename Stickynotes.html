@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            user-select: none;
+            /* Prevent scrollbars */
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border-radius: 50px;
+            background-color: gold;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+            
+            position: absolute;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.5s ease,opacity 0.5s ease
+            ;
+        }
+        .box:hover{
+            transform: scale(1.1); /* Zoom in */
+        }
+        #add {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+
+        .textbox {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            width: 70%;
+            height: 70%;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 25px;
+            margin-left: 36px;
+            resize: none;
+            overflow-y: scroll;
+            margin-right: -50px;
+            padding-right: 50px;
+            cursor: pointer;
+            font-family: "Edu AU VIC WA NT Hand", cursive;
+        }
+
+        /* #draggable{
+            border: 2px solid black;
+            background-color: black;
+            width: 200px;
+            height: 400px;
+            position: absolute;
+            cursor:pointer;
+        } */
+
+        #menubar {
+            border: 2px solid black;
+            border-radius: 50px;
+            width: 50px;
+            height: 350px;
+            background-color: black;
+            margin-top: 150px;
+            margin-left: 10px;
+            box-shadow: 5px 5px 20px rgba(98, 96, 96, 0.3);
+            color: white;
+        }
+
+        #maindiv {
+            margin: 0;
+            /* Remove default margin */
+            overflow: hidden;
+            /* Hide scrollbars */
+            display: flex;
+            height: 100vh;
+            /* Full viewport height */
+            width: 100vw;
+            background-color: #e5e5e5;
+            top: 0;
+            left: 0;
+        }
+
+        #add {
+            margin-left: 50px;
+        }
+
+        .deleteall {
+            
+            
+            font-size: 32px;
+            margin-left: 6px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .addnote {
+            
+                
+            font-size: 30px;
+            margin-left: 7px;
+            margin-top: 40px;
+            cursor: pointer;
+        }
+        .delete{
+            
+            
+            font-size: 30px;
+            margin-left: 7px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .bgcolor{
+            
+            
+            font-size: 30px;
+            margin-left: 7px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .textcolor{
+            
+            
+            font-size: 30px;
+            margin-left: 7px;
+            margin-top: 12px;
+            cursor: pointer;
+        }
+        .dark_mode{
+            
+            font-size: 30px;
+            margin-left: 7px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .light_mode{
+            
+            font-size: 30px;
+            margin-left: 7px;
+            margin-top: 15px;
+            cursor: pointer;
+            display: none;
+        }
+        .material-symbols-outline{
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24;
+        }
+        #colorpicker{
+            display: none;
+        }
+        #colorpicker2{
+            display: none;
+        }
+        
+    </style>
+</head>
+
+<body onload="move()" id="bodytheme">
+    <script src="Sticky.js"></script>
+    <div id="maindiv">
+        <div id="menubar">
+            <a>
+                <span class="material-symbols-outlined addnote" onclick="increment()" title="add Sticky">
+                    add_circle
+                </span>
+            </a>
+            <span class="material-symbols-outlined delete" onclick="decrement()" title="delete Sticky">
+                delete
+            </span>
+            <span class="material-symbols-outlined deleteall" onclick="deleteall()" title="delete all Sticky">
+                delete_forever
+            </span>
+            <span class="material-symbols-outlined bgcolor" onclick="choosing()" title="Sticky theme">
+                palette
+            </span>
+            <span class="material-symbols-outlined textcolor" onclick="choosing2()" title="Sticky font colour">
+                format_color_text
+            </span>
+                <span class="material-symbols-outlined dark_mode"  id="modeIcon" onclick="mode()" title="dark mode">
+                    dark_mode
+                </span>
+            </span>
+        </div>
+        <div class="colorpickercontainer">
+            <input type="color" id="colorpicker">
+        </div>  
+        <div id="add"></div>
+    </div>
+        <input type="color" id="colorpicker">
+        <input type="color" id="colorpicker2">
+
+
+</body>
+
+</html>
