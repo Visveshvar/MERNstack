@@ -1,18 +1,16 @@
-var a=1;
+var a=0;
 var nextmarginleft=60;
 var nextmargintop=15;
 var butincr=1;
 var activenote=null
 var container=document.getElementById('add') 
+
 function increment(){
     //var containerWidth = container.offsetWidth;
+    var ins=document.getElementById('instruction')
+    ins.style.display='none';
     var boxsize=100;
-     if(nextmarginleft+boxsize>window.innerWidth-200 && nextmargintop+boxsize>window.innerHeight-200)
-     {
-         alert("Queue is full! Cannot add more sticky notes")
-         return;
-     }
-     else if(nextmarginleft+boxsize>window.innerWidth-200 && nextmargintop+boxsize<window.innerHeight-200)
+     if(nextmarginleft+boxsize>window.innerWidth-200)
         {
             nextmargintop+=210;
             nextmarginleft=60;
@@ -23,6 +21,7 @@ function increment(){
     newbox.style.left=nextmarginleft+"px"
     newbox.style.top=nextmargintop+"px"
     var textcontent=document.createElement('textarea');
+    textcontent.placeholder="Type here..."
     textcontent.className="textbox"
     newbox.appendChild(textcontent)
     document.getElementById('add').appendChild(newbox)
@@ -46,26 +45,46 @@ function increment(){
 //     document.getElementsByClassName().appendChild(text)
 // }
 function decrement(){
+    if(a===0)
+    {
+        nextmarginleft=60;
+        nextmargintop=15;
+        alert('No Sticky notes to delete');
+        return;
+    }
     if(activenote){
         activenote.parentNode.removeChild(activenote)
         activenote=null;
-        nextmargin-=100
+        if(nextmarginleft===60){
+            nextmargintop-=210;
+        }
         a--;
     }
     else{
         var delbox=document.getElementById('add')
         delbox.removeChild(delbox.lastChild);
-        nextmargin-=100
+        nextmarginleft-=210
+        if(nextmarginleft===60 && a!=1){
+            nextmargintop-=210;
+        }
         a--;
-}
+    }
 }
 function deleteall(){
+    if(a===0)
+        {
+            nextmarginleft=60;
+            nextmargintop=15;
+            alert('No Sticky notes to delete');
+            return;
+        }
     var delbox = document.getElementById('add');
     while (delbox.firstChild) {
             delbox.removeChild(delbox.firstChild);
         
     }
-    nextmargin=0;
+    nextmarginleft=60;
+    nextmargintop=15;
 }
 function choosing()
 {
@@ -94,9 +113,9 @@ function mode()
 }
 function toggleMode() {
     var icon = document.getElementById('modeIcon'); // Get the icon element
-    var bg=document.getElementById('maindiv')
+    var bg=document.getElementById('bodytheme')
     var bgmen=document.getElementById('menubar')
-
+    var ins=document.getElementById('instruction')
         // Apply box shadow to each box
        
     // Check current icon and toggle accordingly
@@ -104,13 +123,26 @@ function toggleMode() {
        
         icon.innerText = 'light_mode'; // Change to light mode icon
         icon.setAttribute('title','light mode')
+        bg.style.background = `
+        linear-gradient(135deg, #383737 25%, transparent 25%) -50px 0,
+        linear-gradient(225deg, #383737 25%, transparent 25%) -50px 0,
+        linear-gradient(315deg, #383737 25%, transparent 25%),
+        linear-gradient(45deg, #383737 25%, transparent 25%)`;
+        bg.style.backgroundSize = "100px 100px";
         bg.style.backgroundColor='#1c1c1c'
         bgmen.style.backgroundColor='#e6e5e3'
         bgmen.style.color='black'
-        
+        ins.style.color='white'
     } else {
         icon.innerText = 'dark_mode'; // Change to dark mode icon
-        bg.style.backgroundColor='#e5e5e5'
+        ins.style.color='black'
+        bg.style.background = `
+        linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -50px 0,
+    linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
+    linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
+    linear-gradient(45deg, #ECEDDC 25%, transparent 25%)`;
+    bg.style.backgroundSize = "100px 100px";
+        bg.style.backgroundColor='#82ebd1'
         bgmen.style.backgroundColor='black'
         bgmen.style.color='white'
         icon.setAttribute('title','dark mode')

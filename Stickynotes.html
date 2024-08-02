@@ -6,17 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap"
-        rel="stylesheet">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/Microsoft_Sticky_Notes_icon.png">
+    <title>Sticky Notes</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            
             user-select: none;
             /* Prevent scrollbars */
+            background:
+            linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -50px 0,
+            linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
+            linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
+            linear-gradient(45deg, #ECEDDC 25%, transparent 25%);
+            background-size: 100px 100px;
+            background-color: #82ebd1;
         }
+        
 
         .box {
             width: 200px;
@@ -26,10 +34,9 @@
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
             
             position: absolute;
-            cursor: pointer;
+            cursor: move;
             overflow: hidden;
-            transition: transform 0.5s ease,opacity 0.5s ease
-            ;
+            transition: transform 0.5s ease,opacity 0.5s ease;
         }
         .box:hover{
             transform: scale(1.1); /* Zoom in */
@@ -57,7 +64,7 @@
             overflow-y: scroll;
             margin-right: -50px;
             padding-right: 50px;
-            cursor: pointer;
+            cursor: move;
             font-family: "Edu AU VIC WA NT Hand", cursive;
         }
 
@@ -80,31 +87,32 @@
             margin-left: 10px;
             box-shadow: 5px 5px 20px rgba(98, 96, 96, 0.3);
             color: white;
+            position: fixed;
         }
 
         #maindiv {
             margin: 0;
             /* Remove default margin */
-            overflow: hidden;
+            
             /* Hide scrollbars */
             display: flex;
             height: 100vh;
             /* Full viewport height */
             width: 100vw;
-            background-color: #e5e5e5;
+            
             top: 0;
             left: 0;
         }
 
         #add {
-            margin-left: 50px;
+            margin-left: 100px;
         }
 
         .deleteall {
             
             
             font-size: 32px;
-            margin-left: 6px;
+            margin-left: 8px;
             margin-top: 15px;
             cursor: pointer;
         }
@@ -112,7 +120,7 @@
             
                 
             font-size: 30px;
-            margin-left: 7px;
+            margin-left: 9px;
             margin-top: 40px;
             cursor: pointer;
         }
@@ -120,7 +128,7 @@
             
             
             font-size: 30px;
-            margin-left: 7px;
+            margin-left: 9px;
             margin-top: 15px;
             cursor: pointer;
         }
@@ -128,7 +136,7 @@
             
             
             font-size: 30px;
-            margin-left: 7px;
+            margin-left: 9px;
             margin-top: 15px;
             cursor: pointer;
         }
@@ -136,21 +144,21 @@
             
             
             font-size: 30px;
-            margin-left: 7px;
+            margin-left: 9px;
             margin-top: 12px;
             cursor: pointer;
         }
         .dark_mode{
             
             font-size: 30px;
-            margin-left: 7px;
+            margin-left: 9px;
             margin-top: 15px;
             cursor: pointer;
         }
         .light_mode{
             
             font-size: 30px;
-            margin-left: 7px;
+            margin-left: 9px;
             margin-top: 15px;
             cursor: pointer;
             display: none;
@@ -168,7 +176,15 @@
         #colorpicker2{
             display: none;
         }
-        
+        #instruction{
+            margin-top: 140px;
+            margin-left: 350px;
+            line-height: 40px;
+            font-weight: 500;
+            font-size: 15px;
+            color: black;
+        }
+    
     </style>
 </head>
 
@@ -201,7 +217,20 @@
         <div class="colorpickercontainer">
             <input type="color" id="colorpicker">
         </div>  
-        <div id="add"></div>
+        <div id="add">
+            <div id="instruction" >
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Click on plus icon to add a Sticky note</li>
+                    <li>Click and drag to move sticky note</li>
+                    <li>Click on delete icon to delete selected sticky note(NOTE: if no sticky note is selected, lastly added sticky note will deleted)</li>
+                    <li>Click on delete all icon to delete all Sticky note</li>
+                    <li>Click on Palette icon to change the background colour of selected sticky note</li>
+                    <li>Click on Text colour icon to change the text colour of sticky note</li>
+                    <li>Click on Secondary icon to switch between dark mode and light mode</li>
+                </ol>
+            </div>  
+        </div>
     </div>
         <input type="color" id="colorpicker">
         <input type="color" id="colorpicker2">
