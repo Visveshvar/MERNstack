@@ -138,77 +138,60 @@ var newX=0;
 var newY=0;
 var startX=0;
 var startY=0;
-function mouseDown(e){
+var offsetX = 0;
+var offsetY = 0;
+function mouseDown(e) {
+    e.preventDefault(); // Prevent text selection
     drag = e.target.closest('.box');
-    startX=e.clientX
-    startY=e.clientY
-    document.addEventListener('mousemove',mouseMove)
-    document.addEventListener('mouseup',mouseUp)
+    startX = e.clientX;
+    startY = e.clientY;
+    offsetX = drag.offsetLeft;
+    offsetY = drag.offsetTop;
+
+    document.addEventListener('mousemove', mouseMove);
+    document.addEventListener('mouseup', mouseUp);
 }
-function touchStart(e){
+
+function touchStart(e) {
+    e.preventDefault(); // Prevent default touch behavior
     drag = e.target.closest('.box');
-    startX=e.clientX
-    startY=e.clientY
-    document.addEventListener('touchmove',touchMove)
-    document.addEventListener('touchend',touchEnd)
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    offsetX = drag.offsetLeft;
+    offsetY = drag.offsetTop;
+
+    document.addEventListener('touchmove', touchMove);
+    document.addEventListener('touchend', touchEnd);
 }
-function mouseMove(e){
-    if(drag)
-    {
+
+function mouseMove(e) {
+    if (drag) {
         var newX = e.clientX - startX;
         var newY = e.clientY - startY;
 
-        var newLeft = drag.offsetLeft + newX;
-        var newTop = drag.offsetTop + newY;
-
-        var viewportWidth = window.innerWidth;
-        var viewportHeight = window.innerHeight;
-
-        var boxWidth = drag.offsetWidth;
-        var boxHeight = drag.offsetHeight;
-
-        newLeft = Math.max(0, Math.min(newLeft, viewportWidth - boxWidth-130));
-        newTop = Math.max(0, Math.min(newTop, viewportHeight - boxHeight-20));
-
-        drag.style.left = newLeft + "px";
-        drag.style.top = newTop + "px";
-
-        startX = e.clientX;
-        startY = e.clientY;
+        drag.style.left = offsetX + newX + 'px';
+        drag.style.top = offsetY + newY + 'px';
     }
 }
-function touchMove(e){
-    if(drag)
-    {
-        var newX = e.clientX - startX;
-        var newY = e.clientY - startY;
 
-        var newLeft = drag.offsetLeft + newX;
-        var newTop = drag.offsetTop + newY;
+function touchMove(e) {
+    if (drag) {
+        var newX = e.touches[0].clientX - startX;
+        var newY = e.touches[0].clientY - startY;
 
-        var viewportWidth = window.innerWidth;
-        var viewportHeight = window.innerHeight;
-
-        var boxWidth = drag.offsetWidth;
-        var boxHeight = drag.offsetHeight;
-
-        newLeft = Math.max(0, Math.min(newLeft, viewportWidth - boxWidth-130));
-        newTop = Math.max(0, Math.min(newTop, viewportHeight - boxHeight-20));
-
-        drag.style.left = newLeft + "px";
-        drag.style.top = newTop + "px";
-
-        startX = e.clientX;
-        startY = e.clientY;
+        drag.style.left = offsetX + newX + 'px';
+        drag.style.top = offsetY + newY + 'px';
     }
 }
-function mouseUp(){
-    drag=null
-    document.removeEventListener('mousemove',mouseMove)
-    document.removeEventListener('mouseup',mouseUp)
+
+function mouseUp() {
+    drag = null;
+    document.removeEventListener('mousemove', mouseMove);
+    document.removeEventListener('mouseup', mouseUp);
 }
-function touchEnd(){
-    drag=null
-    document.removeEventListener('touchmove',touchMove)
-    document.removeEventListener('touchend',touchEnd)
+
+function touchEnd() {
+    drag = null;
+    document.removeEventListener('touchmove', touchMove);
+    document.removeEventListener('touchend', touchEnd);
 }
