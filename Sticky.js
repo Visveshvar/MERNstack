@@ -10,20 +10,14 @@ function increment(){
     var containerWidth = container.clientWidth;
     var containerHeight = container.clientHeight;
 
-    var boxWidth = 100; // Width of your sticky note
-    var boxHeight = 100; // Height of your sticky note
+    var boxWidth = 100; 
+    var boxHeight = 100;
     
     var randomLeft = Math.random() * (containerWidth - boxWidth-200);
     var  randomTop = Math.random() * (containerHeight - boxHeight-200);
-    
-    // Generate random positions within the container's bounds
-    
 
     var newbox = document.createElement('div');
     newbox.className = 'box';
-    newbox.setAttribute('data-id', a); // Assign unique ID
-
-    // Apply the random position
     newbox.style.position = 'absolute';
     newbox.style.left = randomLeft + 'px';
     newbox.style.top = randomTop + 'px';
@@ -34,18 +28,14 @@ function increment(){
     document.getElementById('add').appendChild(newbox)
     newbox.addEventListener('mousedown',mouseDown)
     textcontent.addEventListener('mousedown',mouseDown)
+    newbox.addEventListener('touchstart',touchStart)
+    textcontent.addEventListener('touchstart',touchStart)
     a++;
     newbox.addEventListener('click',()=>{
         activenote=newbox;
         
     })
 }
-// function edit()
-// {
-//     var text=document.createElement('textarea')
-//     text.className='textcontent'
-//     document.getElementsByClassName().appendChild(text)
-// }
 function decrement(){
     if(a===0)
     {
@@ -90,7 +80,6 @@ function choosing()
         var colorbox=event.target.value;
         if(activenote){
             activenote.style.backgroundColor=colorbox;
-           // activenote.firstChild.style.color = activenote.firstChild.style.color || 'black';
         }
     })
 }
@@ -109,16 +98,14 @@ function mode()
     document.getElementById('modeIcon').addEventListener('click', toggleMode);
 }
 function toggleMode() {
-    var icon = document.getElementById('modeIcon'); // Get the icon element
+    var icon = document.getElementById('modeIcon');
     var bg=document.getElementById('bodytheme')
     var bgmen=document.getElementById('menubar')
     var ins=document.getElementById('instruction')
-        // Apply box shadow to each box
-       
-    // Check current icon and toggle accordingly
+
     if (icon.innerText === 'dark_mode') {
        
-        icon.innerText = 'light_mode'; // Change to light mode icon
+        icon.innerText = 'light_mode'; 
         icon.setAttribute('title','light mode')
         bg.style.background = `
         linear-gradient(135deg, #383737 25%, transparent 25%) -50px 0,
@@ -131,7 +118,7 @@ function toggleMode() {
         bgmen.style.color='black'
         ins.style.color='white';
     } else {
-        icon.innerText = 'dark_mode'; // Change to dark mode icon
+        icon.innerText = 'dark_mode';
         bg.style.background = `
         linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -50px 0,
     linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
@@ -152,14 +139,45 @@ var newY=0;
 var startX=0;
 var startY=0;
 function mouseDown(e){
-    //e.preventDefault(); // Prevent text selection in textarea
     drag = e.target.closest('.box');
     startX=e.clientX
     startY=e.clientY
     document.addEventListener('mousemove',mouseMove)
     document.addEventListener('mouseup',mouseUp)
 }
+function touchStart(e){
+    drag = e.target.closest('.box');
+    startX=e.clientX
+    startY=e.clientY
+    document.addEventListener('touchmove',touchMove)
+    document.addEventListener('touchend',touchEnd)
+}
 function mouseMove(e){
+    if(drag)
+    {
+        var newX = e.clientX - startX;
+        var newY = e.clientY - startY;
+
+        var newLeft = drag.offsetLeft + newX;
+        var newTop = drag.offsetTop + newY;
+
+        var viewportWidth = window.innerWidth;
+        var viewportHeight = window.innerHeight;
+
+        var boxWidth = drag.offsetWidth;
+        var boxHeight = drag.offsetHeight;
+
+        newLeft = Math.max(0, Math.min(newLeft, viewportWidth - boxWidth-130));
+        newTop = Math.max(0, Math.min(newTop, viewportHeight - boxHeight-20));
+
+        drag.style.left = newLeft + "px";
+        drag.style.top = newTop + "px";
+
+        startX = e.clientX;
+        startY = e.clientY;
+    }
+}
+function touchMove(e){
     if(drag)
     {
         var newX = e.clientX - startX;
@@ -188,4 +206,9 @@ function mouseUp(){
     drag=null
     document.removeEventListener('mousemove',mouseMove)
     document.removeEventListener('mouseup',mouseUp)
+}
+function touchEnd(){
+    drag=null
+    document.removeEventListener('touchmove',touchMove)
+    document.removeEventListener('touchend',touchEnd)
 }
