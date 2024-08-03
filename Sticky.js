@@ -141,7 +141,6 @@ var startY=0;
 var offsetX = 0;
 var offsetY = 0;
 function mouseDown(e) {
-    e.preventDefault(); // Prevent text selection
     drag = e.target.closest('.box');
     startX = e.clientX;
     startY = e.clientY;
@@ -153,7 +152,7 @@ function mouseDown(e) {
 }
 
 function touchStart(e) {
-    e.preventDefault(); // Prevent default touch behavior
+    
     drag = e.target.closest('.box');
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
