@@ -3,19 +3,30 @@ var nextmarginleft=60;
 var butincr=1;
 var activenote=null
 var container=document.getElementById('add') 
-
 function increment(){
-    var ins=document.getElementById('instruction')
-    ins.style.display='none';
-    var boxsize=100;
-     if(nextmarginleft+boxsize>window.innerWidth-200)
-    {
-            nextmarginleft=60;
-    }
+    var ins = document.getElementById('instruction');
+    ins.style.display = 'none';
+    var container = document.getElementById('add');
+    var containerWidth = container.clientWidth;
+    var containerHeight = container.clientHeight;
 
-    var newbox=document.createElement('div')
-    newbox.className='box'
-    newbox.style.left=nextmarginleft+"px"
+    var boxWidth = 100; // Width of your sticky note
+    var boxHeight = 100; // Height of your sticky note
+    
+    var randomLeft = Math.random() * (containerWidth - boxWidth-200);
+    var  randomTop = Math.random() * (containerHeight - boxHeight-200);
+    
+    // Generate random positions within the container's bounds
+    
+
+    var newbox = document.createElement('div');
+    newbox.className = 'box';
+    newbox.setAttribute('data-id', a); // Assign unique ID
+
+    // Apply the random position
+    newbox.style.position = 'absolute';
+    newbox.style.left = randomLeft + 'px';
+    newbox.style.top = randomTop + 'px';
     var textcontent=document.createElement('textarea');
     textcontent.placeholder="Type here..."
     textcontent.className="textbox"
@@ -24,9 +35,9 @@ function increment(){
     newbox.addEventListener('mousedown',mouseDown)
     textcontent.addEventListener('mousedown',mouseDown)
     a++;
-    nextmarginleft+=60;
     newbox.addEventListener('click',()=>{
         activenote=newbox;
+        
     })
 }
 // function edit()
@@ -164,7 +175,7 @@ function mouseMove(e){
         var boxHeight = drag.offsetHeight;
 
         newLeft = Math.max(0, Math.min(newLeft, viewportWidth - boxWidth-130));
-        newTop = Math.max(0, Math.min(newTop, viewportHeight - boxHeight-40));
+        newTop = Math.max(0, Math.min(newTop, viewportHeight - boxHeight-20));
 
         drag.style.left = newLeft + "px";
         drag.style.top = newTop + "px";
