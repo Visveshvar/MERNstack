@@ -119,13 +119,9 @@ function toggleMode() {
         ins.style.color='white';
     } else {
         icon.innerText = 'dark_mode';
-        bg.style.background = `
-        linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -50px 0,
-    linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
-    linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
-    linear-gradient(45deg, #ECEDDC 25%, transparent 25%)`;
-    bg.style.backgroundSize = "100px 100px";
-        bg.style.backgroundColor='#82ebd1'
+        bg.style.backgroundColor= 'transparent';
+        bg.style.backgroundImage= 'radial-gradient(#000000 1px, #e5e5f7 1px)';
+        bg.style.backgroundSize= '30px 30px';
         bgmen.style.backgroundColor='black'
         bgmen.style.color='white'
         ins.style.color='black'
